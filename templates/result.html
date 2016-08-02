@@ -1,0 +1,12 @@
+<p>Вы искали: <strong>{{ query }}</strong></p>
+
+{% if providers %}
+	<p>Найдено {{ providers|length }} поставщиков для {{ query }}.</p>
+	<ul>
+		{% for provider in providers %}
+		<li><a href="/provider/{{ provider.id }}/">{{ provider }}</a></li>
+		{% endfor %}
+	</ul>
+{% else %}
+    <p>По вашему запросу нет результатов.</p>
+{% endif %}

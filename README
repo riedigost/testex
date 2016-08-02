@@ -1,0 +1,36 @@
+author: Mikhail Kakanov 
+description: Тестовое задание для Supl.biz
+
+Развертывание проекта с Apache и mod_wsgi:
+
+	1. Отредактируйте ваш httpd.conf:
+
+		WSGIScriptAlias / /path/to/mysite.com/mysite/wsgi.py
+		WSGIPythonPath /path/to/mysite.com
+
+		<Directory /path/to/mysite.com/mysite>
+		<Files wsgi.py>
+		Require all granted
+		</Files>
+		</Directory>
+
+	2. Настройте параметры подключения к БД в testex/settings.py:
+
+		DATABASES = {
+		    'default': {
+		        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		        'NAME': 'testex',
+		        'USER': 'testex',
+		        'PASSWORD': 'testex',
+		        'HOST': '',
+		        'PORT': '',
+		    }
+		}
+
+	3. После залить дамп в БД (ssh):
+
+	python manage.py loaddate dump.json
+
+	4. Создать учетную запись администратора:
+
+	python manage.py createsuperuser

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block head%}
+{% load static %}
+{% static "jquery.js" as jquery %}
+<script type="text/javascript" src="{{ jquery }}"></script>
+    <script>  
+        $(document).ready(function(){  
+          
+            $('#submit').click(function(){  
+                $.ajax({  
+                    url: "search/?q="+$("#query").val(),  
+                    cache: false,  
+                    success: function(html){  
+                        $("#result").html(html);  
+                    }  
+                });  
+            });  
+            $('form').submit(function() {
+                $.ajax({  
+                    url: "search/?q="+$("#query").val(),  
+                    cache: false,  
+                    success: function(html){  
+                        $("#result").html(html);  
+                    }  
+                });  
+                return false;
+            });
+        });  
+
+    </script>
+{% endblock %}
+{% block content %}
+	<p>Введите название компании:</p>
+    <form id="search">
+        <input id="query" type="text" name="q">
+        <input id="submit" type="button" value="Search">
+    </form>
+    <div id="result"></div>
+{% endblock %}

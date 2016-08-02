@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ provider.name }}{% endblock %}
+{% block content %}
+	{% if regions %}
+		<p>Поставщик <strong>{{ provider.name }}</strong> работает в {{ regions|length }} регионах.</p>
+	    <ul>
+	        {% for region in regions %}
+	        <li>{{ region.name }}</li>
+	        {% endfor %}
+	    </ul>
+	{% endif %}
+{% endblock %}
