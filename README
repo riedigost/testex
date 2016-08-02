@@ -1,5 +1,8 @@
 author: Mikhail Kakanov 
 description: Тестовое задание для Supl.biz
+python-version: 3.4.3+
+django-version: 1.11.dev20160727175031
+postgresql-version: 9.4.5
 
 Развертывание проекта с Apache и mod_wsgi:
 
